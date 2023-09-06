@@ -20,7 +20,7 @@
           ></path>
         </svg>
         <span class="text-light ms-2">Cart</span>
-        <div v-if="true" 
+        <div v-if="store.addedEl.length" 
         class="count text-light bg-danger">{{store.addedEl.length}}</div>
       </router-link>
     </div>
@@ -34,15 +34,16 @@
           <h1>Filtr:</h1>
           <h6>Category:
             <ul>
-              <li class="pb-1 pointer">smartphones</li>
-              <li class="pb-1 pointer">laptops</li>
-              <li class="pb-1 pointer">fragrances</li>
-              <li class="pb-1 pointer">skincare</li>
+              <li @click="getProducts();" class="pb-1 pointer">All</li>
+              <li @click="getCategory('smartphones');" class="pb-1 pointer">smartphones</li>
+              <li @click="getCategory('laptops');" class="pb-1 pointer">laptops</li>
+              <li @click="getCategory('fragrances');" class="pb-1 pointer">fragrances</li>
+              <li @click="getCategory('skincare');" class="pb-1 pointer">skincare</li>
             </ul>
           </h6>
         </div>
         <div class="col-10">
-          <div class="row align-items-stretch">
+          <div class="row align-items-stretch" v-if="items">
             <div
               height="100%"
               class="col-3 d-flex justify-content-between flex-column"
@@ -51,6 +52,7 @@
             >
               <div class="card mb-3" style="width: 18rem">
                 <img
+                v-if="product.images"
                   :src="product.images[0]"
                   class="card-img-top border-bottom-1 border"
                   alt="..."
@@ -129,12 +131,19 @@ const store = useCounterStore()
 const items = ref([]);
 
 async function getProducts() {
-  const res = await fetch("https://dummyjson.com/products");
-  const { products } = await res.json();
+  const res = await fetch("https://dummyjson.com/products?limit=20");
+  const  {products}  = await res.json();
   console.log(products);
-  const sliceEl = products.slice(0, 20);
-  items.value = sliceEl;
+  items.value = products;
 }
 getProducts();
+
+async function getCategory(category) {
+  const res = await fetch(`https://dummyjson.com/products/category/${category}?limit=20`);
+  const  {products}  = await res.json();
+  console.log(products);
+  items.value = products;
+}
+
 
 </script>
