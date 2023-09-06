@@ -6,7 +6,7 @@
     <nav class="navbar navbar-light bg-primary">
     <div class="container py-2">
       <router-link to="/" class="navbar-brand text-light fw-bolder">PRODUCTS</router-link>
-      <router-link to="/cart" class="d-flex border border-light p-2 rounded-1">
+      <router-link to="/cart" class="d-flex border border-light p-2 rounded-1 cart">
         <svg
           width="24"
           height="24"
@@ -23,6 +23,8 @@
           ></path>
         </svg>
         <span class="text-light ms-2">Cart</span>
+        <div v-if="true" 
+        class="count text-light bg-danger">0</div>
       </router-link>
     </div>
   </nav>
