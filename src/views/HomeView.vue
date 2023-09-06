@@ -21,7 +21,7 @@
         </svg>
         <span class="text-light ms-2">Cart</span>
         <div v-if="true" 
-        class="count text-light bg-danger">{{store.count}}</div>
+        class="count text-light bg-danger">{{store.addedEl}}</div>
       </router-link>
     </div>
   </nav>
@@ -75,7 +75,7 @@
                     class="d-flex justify-content-between align-items-center"
                   >
                     <p class="m-0">{{ product.price }}$</p>
-                    <button @click="store.increment()" 
+                    <button @click="store.increment(product.id)" 
                      class="btn btn-primary"
                       ><svg
                         width="24"
