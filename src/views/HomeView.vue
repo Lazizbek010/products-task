@@ -21,7 +21,7 @@
         </svg>
         <span class="text-light ms-2">Cart</span>
         <div v-if="true" 
-        class="count text-light bg-danger">{{store.addedEl}}</div>
+        class="count text-light bg-danger">{{store.addedEl.length}}</div>
       </router-link>
     </div>
   </nav>

@@ -28,3 +28,10 @@
     align-items: center;
     font-size: 12px;
 }
+.cart-product{
+    display: flex;
+}
+.cart-product img{
+    width: 300px;
+    height: 200px;
+}
