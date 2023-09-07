@@ -22,9 +22,9 @@ const store = useCounterStore();
 const cartProduct = ref([]);
 
 async function getProducts() {
-  const res = await fetch("https://dummyjson.com/products");
+  const res = await fetch("https://dummyjson.com/products?limit=100");
   const { products } = await res.json();
-  products.forEach((el) => {
+  products.forEach((el) => {  
     store.addedEl.forEach((item) => {
       if (el.id === item) {
         cartProduct.value.push(el);

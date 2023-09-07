@@ -11,6 +11,7 @@ export const useCounterStore = defineStore('counter', () => {
       if(!isAvailable) addedEl.value.push(id)
     } else {
       addedEl.value.push(id)
+      console.log(id);
     }
   }
 
